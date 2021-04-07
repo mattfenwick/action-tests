@@ -1,0 +1,36 @@
+name: experimental
+
+on:
+  push:
+    inputs:
+      cni:
+        required: true
+      fromSource:
+        description: 'if true, run from source; otherwise run from an image'
+        required: false
+        default: true
+  pull_request:
+    inputs:
+      cni:
+        required: true
+      fromSource:
+        description: 'if true, run from source; otherwise run from an image'
+        required: false
+        default: true
+  workflow_dispatch:
+    inputs:
+      cni:
+        required: true
+      fromSource:
+        description: 'if true, run from source; otherwise run from an image'
+        required: false
+        default: true
+
+jobs:
+  my-experiment:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run experiments
+        working-directory: hack
+        run: a=${{ github.event.inputs.cni }} b=${{ github.event.inputs.fromSource }} ./hack.sh
