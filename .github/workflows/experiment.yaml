@@ -33,4 +33,4 @@ jobs:
       - uses: actions/checkout@v2
       - name: Run experiments
         working-directory: hack
-        run: a=${{ github.event.inputs.cni }} b=${{ github.event.inputs.fromSource }} ./hack.sh
+        run: a=${{ github.event.inputs.cni }} b=${{ github.event.inputs.fromSource }} bash ./hack.sh
